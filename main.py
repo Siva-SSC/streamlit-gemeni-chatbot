@@ -1,19 +1,23 @@
 import os
+
 import streamlit as st
+from dotenv import load_dotenv
 import google.generativeai as gen_ai
 
-GOOGLE_API_KEY = "AIzaSyDNbLonDcxyJjvmKMQOmmU2_GyeH50hTG0"
 
-#Configure Streamlit page settings
+# Load environment variables
+load_dotenv()
 
+# Configure Streamlit page settings
 st.set_page_config(
-    page_title="Chat with Gemeni AI",
-    page_icon=":brain",
-    layout="wide"
+    page_title="Chat with Gemini-Pro!",
+    page_icon=":brain:",  # Favicon emoji
+    layout="centered",  # Page layout option
 )
 
-#set up google Gemeni-Pro AI Modle
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
+# Set up Google Gemini-Pro AI model
 gen_ai.configure(api_key=GOOGLE_API_KEY)
 model = gen_ai.GenerativeModel('gemini-pro')
 
